@@ -1,0 +1,78 @@
+---
+layout: default
+title: Pricing
+description: Nursly is free to try with your first 10 shifts. Nursly Pro adds unlimited shifts, earnings analytics, PDF reports and calendar sync — weekly or yearly with a free trial.
+permalink: /pricing
+---
+<main class="home">
+  <section class="section page-top">
+    <div class="wrap">
+      <div class="section-head">
+        <h1>Simple, honest pricing.</h1>
+        <p>Try it free. Upgrade only if it saves you time.</p>
+      </div>
+      <div class="plans">
+        <div class="plan">
+          <h3>Free</h3>
+          <p class="plan-price">$0</p>
+          <p class="plan-sub">Download and try Nursly</p>
+          <ul class="checks">
+            <li>Your first 10 shifts</li>
+            <li>Pay rates with overtime &amp; differentials</li>
+            <li>No account, no credit card</li>
+          </ul>
+        </div>
+        <div class="plan plan-pro">
+          <p class="plan-badge">Most popular</p>
+          <h3>Nursly Pro</h3>
+          <p class="plan-price">Weekly or yearly</p>
+          <p class="plan-sub">Yearly plan includes a free trial</p>
+          <ul class="checks">
+            <li>Unlimited shifts</li>
+            <li>Detailed earnings analytics</li>
+            <li>PDF reports for payroll</li>
+            <li>Apple Calendar sync &amp; schedule sharing</li>
+            <li>Custom shift templates</li>
+          </ul>
+        </div>
+      </div>
+      <p class="fine center">Prices are shown in your local currency in the app before you subscribe. Cancel anytime in iOS Settings.</p>
+    </div>
+  </section>
+
+  <section class="section" id="faq">
+    <div class="wrap narrow">
+      <div class="section-head"><h2>Pricing questions</h2></div>
+      <div class="faq">
+        {% for item in site.data.pricing_faq %}
+        <details>
+          <summary>{{ item.q }}</summary>
+          <p>{{ item.a }}</p>
+        </details>
+        {% endfor %}
+      </div>
+      <p class="faq-more">Something else? <a href="{{ '/support' | relative_url }}">Get support</a></p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="cta-band">
+        <img src="{{ '/assets/img/icon.jpg' | relative_url }}" alt="Nursly app icon" width="88" height="88">
+        <h2>Start with your first 10 shifts — free.</h2>
+        <p>No account, no credit card. Upgrade only if Nursly saves you time.</p>
+        {% include app-store-button.html ct="pricing-cta" %}
+      </div>
+    </div>
+  </section>
+</main>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [{% for item in site.data.pricing_faq %}
+    {"@type": "Question", "name": {{ item.q | jsonify }}, "acceptedAnswer": {"@type": "Answer", "text": {{ item.a | jsonify }}}}{% unless forloop.last %},{% endunless %}{% endfor %}
+  ]
+}
+</script>

@@ -1,0 +1,2 @@
+{%- comment -%}Usage: {% include app-store-url.html ct="site-hero" %}{%- endcomment -%}
+https://apps.apple.com/app/apple-store/id{{ site.app_store_id }}{% if site.app_store_pt and site.app_store_pt != "" %}?pt={{ site.app_store_pt }}&amp;ct={{ include.ct | default: 'site' }}&amp;mt=8{% endif %}

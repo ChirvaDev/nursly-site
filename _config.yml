@@ -1,0 +1,46 @@
+# Site settings — used by every page, the guides, SEO tags and the sitemap.
+title: Nursly
+tagline: Nurse Shift Calendar & Pay Tracker
+description: Nursly is a nurse shift calendar and pay tracker for iPhone. Plan shifts, see your real earnings with night, weekend, holiday and overtime pay, and never oversleep with the shift alarm.
+lang: en
+
+url: "https://nursly.app"
+baseurl: ""
+
+# Change these in one place — they are used across all pages.
+email: support@nursly.app
+# Nursly Apple ID (App Store Connect). Live in the App Store, so download buttons are active.
+app_store_id: "6758769900"
+# App Store Connect campaign provider token (App Analytics -> Acquisition -> Campaigns -> Generate Campaign Link -> number after "pt=").
+# When set, every download button gets ?pt=…&ct=<place>&mt=8 so App Store Connect shows downloads per button.
+app_store_pt: ""
+
+# Cloudflare Web Analytics token (Cloudflare -> Analytics & Logs -> Web Analytics -> JS snippet). Empty = no analytics.
+cloudflare_analytics_token: ""
+
+logo: /assets/apple-touch-icon.png
+social:
+  name: Nursly
+
+markdown: kramdown
+timezone: UTC
+
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-feed
+
+feed:
+  path: guides/feed.xml
+
+defaults:
+  - scope: { path: "" }
+    values: { image: /assets/og-image.jpg }
+  - scope: { path: "", type: posts }
+    values: { layout: post, permalink: "/guides/:title/" }
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor

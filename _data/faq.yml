@@ -1,0 +1,13 @@
+# Shown on the home page and as FAQ rich results in Google.
+- q: What is Nursly?
+  a: Nursly is a shift calendar and pay tracker for nurses and healthcare shift workers. Plan your day, night, per diem and on-call shifts, and see what you earn — including night, weekend, holiday and overtime pay.
+- q: How does Nursly calculate my pay?
+  a: Set your hourly rate once, plus your night and weekend differentials, holiday multiplier and overtime rules. Nursly applies them to every shift — overtime includes your differentials, just like on a real paycheck — and shows your gross pay, an estimated tax and your net take-home.
+- q: Will the shift alarm work in Silent Mode?
+  a: Yes. On iOS 26.1 and later, the shift alarm uses Apple's AlarmKit, so it rings through Silent Mode and Do Not Disturb. Choose how early it wakes you (30 minutes to 3 hours before a shift) and your snooze length.
+- q: Can I share my schedule with my family?
+  a: Yes. With Nursly Pro you can sync your shifts to Apple Calendar, share your schedule with family and friends, and export a professional PDF report for payroll.
+- q: Where is my shift data stored?
+  a: Your shift calendar and earnings history are stored on your iPhone — there is no account to create. To improve the app we collect pseudonymous usage analytics, such as which features are used and your answers during onboarding. See our Privacy Policy for the full details.
+- q: Does Nursly work for nurses in the UK, Canada and Australia?
+  a: Yes. Nursly works with any currency and any shift pattern — NHS rotas and bank shifts, stat holidays, penalty rates and award loadings, 8-hour or 12-hour rotations.

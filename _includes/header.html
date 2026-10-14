@@ -1,0 +1,31 @@
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="{{ '/' | relative_url }}"><img src="{{ '/assets/img/icon.jpg' | relative_url }}" alt="Nursly logo" width="32" height="32">{{ site.title }}</a>
+    <nav class="nav" aria-label="Main">
+      <a href="{{ '/#features' | relative_url }}">Features</a>
+      <a href="{{ '/pricing' | relative_url }}"{% if page.url == '/pricing' %} aria-current="page"{% endif %}>Pricing</a>
+      <a href="{{ '/guides/' | relative_url }}"{% if page.url contains '/guides/' %} aria-current="page"{% endif %}>Guides</a>
+      <a href="{{ '/about' | relative_url }}"{% if page.url == '/about' %} aria-current="page"{% endif %}>About</a>
+      <a href="{{ '/support' | relative_url }}"{% if page.url == '/support' %} aria-current="page"{% endif %}>Support</a>
+    </nav>
+    <div class="header-actions">
+      {%- if site.app_store_id and site.app_store_id != "" %}
+      <a class="btn btn-sm" href="{% include app-store-url.html ct="site-header" %}">Download</a>
+      {%- else %}
+      <span class="btn btn-sm btn-soon" aria-disabled="true">Coming soon</span>
+      {%- endif %}
+      <details class="menu">
+        <summary aria-label="Menu"><span></span><span></span></summary>
+        <nav class="menu-panel" aria-label="Mobile">
+          <a href="{{ '/#features' | relative_url }}">Features</a>
+          <a href="{{ '/pricing' | relative_url }}"{% if page.url == '/pricing' %} aria-current="page"{% endif %}>Pricing</a>
+          <a href="{{ '/guides/' | relative_url }}">Guides</a>
+          <a href="{{ '/about' | relative_url }}">About</a>
+          <a href="{{ '/support' | relative_url }}">Support</a>
+          <a href="{{ '/privacy' | relative_url }}">Privacy Policy</a>
+          <a href="{{ '/terms' | relative_url }}">Terms of Use</a>
+        </nav>
+      </details>
+    </div>
+  </div>
+</header>

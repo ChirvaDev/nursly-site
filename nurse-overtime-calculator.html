@@ -1,0 +1,181 @@
+---
+layout: default
+title: Nurse Overtime & Shift Differential Calculator
+description: Free nurse pay calculator. Work out your weekly pay with night and weekend differentials, holiday pay and overtime calculated on your full rate — plus estimated take-home.
+permalink: /nurse-overtime-calculator
+---
+<main class="wrap calc-page">
+  <header class="calc-head">
+    <p class="eyebrow">Free tool</p>
+    <h1>Nurse overtime &amp; shift differential calculator</h1>
+    <p class="lead">Add your shifts for one week and see your pay — with night and weekend differentials, holiday pay and overtime worked out on your full rate, the way it shows up on a paycheck.</p>
+  </header>
+
+  <div class="calc" id="calc">
+    <section class="calc-card">
+      <h2>1. Your rates</h2>
+      <div class="fields">
+        <label>Currency
+          <select id="cur">
+            <option value="$">$ (USD, CAD, AUD)</option>
+            <option value="£">£ (GBP)</option>
+            <option value="€">€ (EUR)</option>
+          </select>
+        </label>
+        <label>Base hourly rate<input id="base" type="number" inputmode="decimal" min="0" step="0.01" value="40"></label>
+        <label>Night differential, %<input id="night" type="number" inputmode="decimal" min="0" step="0.5" value="15"></label>
+        <label>Weekend differential, %<input id="weekend" type="number" inputmode="decimal" min="0" step="0.5" value="10"></label>
+        <label>Holiday multiplier, ×<input id="holiday" type="number" inputmode="decimal" min="1" step="0.25" value="1.5"></label>
+        <label>Overtime after, hours/week<input id="otAfter" type="number" inputmode="decimal" min="0" step="1" value="40"></label>
+        <label>Overtime multiplier, ×<input id="otMult" type="number" inputmode="decimal" min="1" step="0.25" value="1.5"></label>
+        <label>Estimated tax, %<input id="tax" type="number" inputmode="decimal" min="0" max="100" step="1" value="22"></label>
+      </div>
+    </section>
+
+    <section class="calc-card">
+      <h2>2. Your shifts this week</h2>
+      <p class="hint">In the order you work them. Hours = paid hours, after unpaid breaks.</p>
+      <div class="shifts" id="shifts"></div>
+      <button type="button" class="btn-add" id="add">+ Add shift</button>
+    </section>
+
+    <section class="calc-card calc-result" aria-live="polite">
+      <h2>3. Your pay</h2>
+      <div class="totals">
+        <div><span>Gross pay</span><strong id="gross">–</strong></div>
+        <div><span>Est. tax</span><strong id="taxOut" class="neg">–</strong></div>
+        <div class="net"><span>Est. take-home</span><strong id="net">–</strong></div>
+      </div>
+      <div class="totals small">
+        <div><span>Total hours</span><strong id="hrs">–</strong></div>
+        <div><span>Overtime hours</span><strong id="ot">–</strong></div>
+        <div><span>Average per hour</span><strong id="avg">–</strong></div>
+      </div>
+      <table class="breakdown">
+        <thead><tr><th>Shift</th><th>Rate</th><th>Reg / OT</th><th>Pay</th></tr></thead>
+        <tbody id="rows"></tbody>
+      </table>
+      <p class="fine">Estimate only — not payroll or tax advice. Your employer's rules may differ.</p>
+    </section>
+  </div>
+
+  <aside class="cta-band calc-cta">
+    <img src="{{ '/assets/img/icon.jpg' | relative_url }}" alt="Nursly app icon" width="72" height="72">
+    <h2>Stop doing this math every week.</h2>
+    <p>Nursly applies your rates to every shift automatically and shows your gross and take-home pay as you go.</p>
+    {% include app-store-button.html ct="calculator" %}
+  </aside>
+
+  <article class="doc calc-doc">
+    <h2>How this calculator works</h2>
+    <p>Each shift starts from your <strong>base hourly rate</strong>. Differentials are added on top as a percentage of the base rate, and they stack:</p>
+    <ul>
+      <li><strong>Night shift:</strong> base + night differential</li>
+      <li><strong>Weekend shift:</strong> base + weekend differential (a weekend night gets both)</li>
+      <li><strong>Holiday:</strong> the whole stacked rate × your holiday multiplier</li>
+    </ul>
+    <p>Hours count toward your weekly total in the order you work them. Once the week passes your overtime threshold, the remaining hours are paid at the <strong>full stacked rate × your overtime multiplier</strong> — so a night or weekend shift that runs into overtime keeps its differential.</p>
+
+    <h2>Example</h2>
+    <p>With a $40 base rate, a 15% night differential and overtime after 40 hours at 1.5×, four 12-hour night shifts add up to 48 hours. The first 40 hours are paid at $46.00 ($40 + 15%), and the last 8 hours at $69.00 ($46.00 × 1.5). Gross pay: 40 × $46 + 8 × $69 = <strong>$2,392</strong>.</p>
+
+    <h2>Do shift differentials count toward overtime?</h2>
+    <p>In the United States, the Fair Labor Standards Act generally requires shift differentials to be included in the "regular rate" used to calculate overtime, which is how this calculator works. Rules can differ by employer, union contract, state and country — for example, some hospitals use the 8/80 system, and California also has daily overtime. When in doubt, check your contract or payroll department.</p>
+
+    <h2>Questions</h2>
+    {% for item in site.data.calculator_faq %}
+    <p><strong>{{ item.q }}</strong><br>{{ item.a }}</p>
+    {% endfor %}
+  </article>
+</main>
+
+<script>
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var shiftsEl = $('shifts');
+  var defaults = [
+    { type: 'night', hours: 12, weekend: false, holiday: false },
+    { type: 'night', hours: 12, weekend: false, holiday: false },
+    { type: 'day', hours: 12, weekend: true, holiday: false },
+    { type: 'day', hours: 12, weekend: true, holiday: false }
+  ];
+
+  function row(s, i) {
+    var el = document.createElement('div');
+    el.className = 'shift';
+    el.innerHTML =
+      '<span class="shift-n">' + (i + 1) + '</span>' +
+      '<select class="s-type" aria-label="Shift type"><option value="day">Day</option><option value="night">Night</option></select>' +
+      '<label class="s-hours"><input class="s-h" type="number" inputmode="decimal" min="0" max="24" step="0.25" aria-label="Paid hours"> h</label>' +
+      '<label class="chk"><input class="s-we" type="checkbox"> Weekend</label>' +
+      '<label class="chk"><input class="s-ho" type="checkbox"> Holiday</label>' +
+      '<button type="button" class="s-del" aria-label="Remove shift">×</button>';
+    el.querySelector('.s-type').value = s.type;
+    el.querySelector('.s-h').value = s.hours;
+    el.querySelector('.s-we').checked = s.weekend;
+    el.querySelector('.s-ho').checked = s.holiday;
+    el.querySelector('.s-del').addEventListener('click', function () { el.remove(); renumber(); calc(); });
+    return el;
+  }
+  function renumber() {
+    shiftsEl.querySelectorAll('.shift-n').forEach(function (n, i) { n.textContent = i + 1; });
+  }
+  function num(id) { var v = parseFloat($(id).value); return isFinite(v) ? v : 0; }
+  function money(v) {
+    var c = $('cur').value;
+    return (v < 0 ? '−' : '') + c + Math.abs(v).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  }
+  function hrs(v) { return (Math.round(v * 100) / 100).toLocaleString('en-US') + ' h'; }
+
+  function calc() {
+    var base = num('base'), night = num('night'), weekend = num('weekend'),
+        holiday = num('holiday') || 1, otAfter = num('otAfter'), otMult = num('otMult') || 1, tax = num('tax');
+    var week = 0, gross = 0, otTotal = 0, rowsHtml = '';
+    shiftsEl.querySelectorAll('.shift').forEach(function (el, i) {
+      var type = el.querySelector('.s-type').value;
+      var h = Math.max(0, parseFloat(el.querySelector('.s-h').value) || 0);
+      var we = el.querySelector('.s-we').checked, ho = el.querySelector('.s-ho').checked;
+      var rate = base;
+      if (type === 'night') rate += base * night / 100;
+      if (we && weekend > 0) rate += base * weekend / 100;
+      if (ho) rate *= holiday;
+      var reg, ot;
+      if (week > otAfter) { reg = 0; ot = h; }
+      else if (week + h > otAfter) { reg = otAfter - week; ot = h - reg; }
+      else { reg = h; ot = 0; }
+      var pay = reg * rate + ot * rate * otMult;
+      week += h; gross += pay; otTotal += ot;
+      var label = (type === 'night' ? 'Night' : 'Day') + (we ? ' · weekend' : '') + (ho ? ' · holiday' : '');
+      rowsHtml += '<tr><td>' + (i + 1) + '. ' + label + '</td><td>' + money(rate) + '/h</td><td>' +
+        hrs(reg).replace(' h', '') + ' / ' + hrs(ot) + '</td><td>' + money(pay) + '</td></tr>';
+    });
+    var taxAmt = gross * tax / 100;
+    $('gross').textContent = money(gross);
+    $('taxOut').textContent = money(-taxAmt);
+    $('net').textContent = money(gross - taxAmt);
+    $('hrs').textContent = hrs(week);
+    $('ot').textContent = hrs(otTotal);
+    $('avg').textContent = week > 0 ? money(gross / week) : '–';
+    $('rows').innerHTML = rowsHtml || '<tr><td colspan="4">Add a shift to see your pay.</td></tr>';
+  }
+
+  defaults.forEach(function (s, i) { shiftsEl.appendChild(row(s, i)); });
+  $('add').addEventListener('click', function () {
+    shiftsEl.appendChild(row({ type: 'day', hours: 12, weekend: false, holiday: false }, shiftsEl.children.length));
+    calc();
+  });
+  $('calc').addEventListener('input', calc);
+  $('calc').addEventListener('change', calc);
+  calc();
+})();
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [{% for item in site.data.calculator_faq %}
+    {"@type": "Question", "name": {{ item.q | jsonify }}, "acceptedAnswer": {"@type": "Answer", "text": {{ item.a | jsonify }}}}{% unless forloop.last %},{% endunless %}{% endfor %}
+  ]
+}
+</script>

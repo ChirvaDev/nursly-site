@@ -1,0 +1,19 @@
+---
+layout: default
+title: Guides
+description: Practical guides for nurses on shift schedules, overtime, differentials, night shift life and getting paid what you earn.
+permalink: /guides/
+---
+<main class="wrap doc">
+  <h1>Guides</h1>
+  <p class="updated">Practical guides on shift schedules, overtime, differentials and getting paid what you earn.</p>
+  <a class="tool-card" href="{{ '/nurse-overtime-calculator' | relative_url }}">
+    <span class="ic">🧮</span>
+    <span><strong>Nurse overtime &amp; shift differential calculator</strong><br>Work out a week of pay with night, weekend, holiday and overtime rates.</span>
+  </a>
+  {% if site.posts.size > 0 %}
+    {% include post-list.html %}
+  {% else %}
+    <div class="card"><p>Our first guides are on the way — on how overtime and differentials stack, planning 12-hour rotations, and more. In the meantime, check the <a href="{{ '/#faq' | relative_url }}">FAQ</a>.</p></div>
+  {% endif %}
+</main>

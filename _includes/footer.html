@@ -1,0 +1,33 @@
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="{{ '/' | relative_url }}"><img src="{{ '/assets/img/icon.jpg' | relative_url }}" alt="Nursly logo" width="32" height="32">{{ site.title }}</a>
+        <p>The nurse shift calendar that shows what you actually earn.</p>
+      </div>
+      <div>
+        <h4>Product</h4>
+        <a href="{{ '/#features' | relative_url }}">Features</a>
+        <a href="{{ '/pricing' | relative_url }}"{% if page.url == '/pricing' %} aria-current="page"{% endif %}>Pricing</a>
+        {%- if site.app_store_id and site.app_store_id != "" %}
+        <a href="{% include app-store-url.html ct="site-footer" %}">Download for iPhone</a>
+        {%- endif %}
+        <a href="{{ '/guides/' | relative_url }}">Guides</a>
+        <a href="{{ '/nurse-overtime-calculator' | relative_url }}">Overtime calculator</a>
+        <a href="{{ '/about' | relative_url }}">About</a>
+      </div>
+      <div>
+        <h4>Help</h4>
+        <a href="{{ '/support' | relative_url }}">Support</a>
+        <a href="{{ '/#faq' | relative_url }}">FAQ</a>
+        <a href="mailto:{{ site.email }}">Contact</a>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <a href="{{ '/privacy' | relative_url }}">Privacy Policy</a>
+        <a href="{{ '/terms' | relative_url }}">Terms of Use</a>
+      </div>
+    </div>
+    <p class="footer-legal">© {{ site.time | date: '%Y' }} {{ site.title }}. Made for nurses and healthcare shift workers.</p>
+  </div>
+</footer>

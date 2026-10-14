@@ -1,0 +1,136 @@
+---
+layout: default
+title: Nurse Shift Calendar & Pay Tracker for iPhone
+description: Nurse shift calendar and pay tracker. Plan shifts, see real pay with night, weekend, holiday and overtime rates, and wake up with a shift alarm.
+---
+<main class="home">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-copy">
+        <p class="eyebrow">For nurses &amp; healthcare shift workers 🩺</p>
+        <h1>Track your shifts.<br><span class="accent">Know your pay.</span></h1>
+        <p class="lead">The shift calendar that shows what you actually earn — with night, weekend, holiday and overtime pay worked out for you. And an alarm that never lets you oversleep.</p>
+        <div class="hero-cta">
+          {% include app-store-button.html ct="site-hero" %}
+        </div>
+      </div>
+      <div class="hero-visual">
+        <picture>
+          <source type="image/webp"
+                  srcset="{{ '/assets/img/hero-760.webp' | relative_url }} 760w, {{ '/assets/img/hero-1280.webp' | relative_url }} 1280w"
+                  sizes="(min-width: 900px) 820px, 100vw">
+          <img src="{{ '/assets/img/hero-760.png' | relative_url }}"
+               srcset="{{ '/assets/img/hero-760.png' | relative_url }} 760w, {{ '/assets/img/hero-1280.png' | relative_url }} 1280w"
+               sizes="(min-width: 900px) 820px, 100vw"
+               alt="Nursly on iPhone: monthly earnings dashboard and shift calendar" width="1280" height="1024" fetchpriority="high">
+        </picture>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHO IT'S FOR (strip under hero) -->
+  <section class="wrap">
+    <ul class="pills">
+      <li>🩺 Registered Nurses</li>
+      <li>💉 LPNs &amp; LVNs</li>
+      <li>🤝 CNAs &amp; HCAs</li>
+      <li>✈️ Travel nurses</li>
+      <li>📆 Per diem &amp; PRN</li>
+      <li>🏥 ICU · ER · OR</li>
+      <li>🇬🇧 NHS &amp; bank shifts</li>
+      <li>👶 Midwives</li>
+      <li>🚑 Agency staff</li>
+    </ul>
+  </section>
+
+  <!-- EVERYTHING YOU NEED (Framer block) -->
+  <section class="section" id="features">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Everything you need to manage your shifts</h2>
+        <p>A powerful suite of tools designed specifically for the modern nursing professional.</p>
+      </div>
+      <div class="fcards">
+        <article class="fcard">
+          <div class="fcard-media"><picture><source type="image/webp" srcset="{{ '/assets/img/landing1.webp' | relative_url }}"><img src="{{ '/assets/img/landing1.jpg' | relative_url }}" alt="Nursly shift templates: day, night, per diem and on-call" width="780" height="692" loading="lazy"></picture></div>
+          <h3>Easy shift tracking</h3>
+          <p>Add day, night, or per diem shifts in two taps. Manage your schedule with ease.</p>
+        </article>
+        <article class="fcard">
+          <div class="fcard-media"><picture><source type="image/webp" srcset="{{ '/assets/img/landing2.webp' | relative_url }}"><img src="{{ '/assets/img/landing2.jpg' | relative_url }}" alt="Nursly gross earnings, estimated net pay and taxes" width="780" height="692" loading="lazy"></picture></div>
+          <h3>Smart pay forecasting</h3>
+          <p>See your gross and net pay instantly. Nursly works out overtime, differentials and estimated taxes for you.</p>
+        </article>
+        <article class="fcard">
+          <div class="fcard-media"><picture><source type="image/webp" srcset="{{ '/assets/img/landing3.webp' | relative_url }}"><img src="{{ '/assets/img/landing3.jpg' | relative_url }}" alt="Nursly export options: PDF report and Calendar" width="780" height="692" loading="lazy"></picture></div>
+          <h3>Calendar sync &amp; PDF reports <span class="pro-tag">Pro</span></h3>
+          <p>Sync with iOS Calendar and export PDF reports for your payroll in seconds.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" id="faq">
+    <div class="wrap narrow">
+      <div class="section-head"><h2>Questions? Answers.</h2></div>
+      <div class="faq">
+        {% for item in site.data.faq %}
+        <details>
+          <summary>{{ item.q }}</summary>
+          <p>{{ item.a }}</p>
+        </details>
+        {% endfor %}
+      </div>
+      <p class="faq-more">Still have a question? <a href="{{ '/support' | relative_url }}">Get support</a></p>
+    </div>
+  </section>
+
+  {% if site.posts.size > 0 %}
+  <!-- GUIDES -->
+  <section class="section">
+    <div class="wrap narrow">
+      <div class="section-head"><h2>Guides for nurses</h2></div>
+      {% include post-list.html limit=3 %}
+      <p class="faq-more"><a href="{{ '/guides/' | relative_url }}">All guides →</a></p>
+    </div>
+  </section>
+  {% endif %}
+
+  <!-- FINAL CTA -->
+  <section class="section">
+    <div class="wrap">
+      <div class="cta-band">
+        <img src="{{ '/assets/img/icon.jpg' | relative_url }}" alt="Nursly app icon" width="88" height="88">
+        <h2>Your time is valuable. Stop wasting it on math.</h2>
+        <p>Join nurses who know exactly what every shift is worth.</p>
+        {% include app-store-button.html ct="site-cta" %}
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [{% for item in site.data.faq %}
+    {"@type": "Question", "name": {{ item.q | jsonify }}, "acceptedAnswer": {"@type": "Answer", "text": {{ item.a | jsonify }}}}{% unless forloop.last %},{% endunless %}{% endfor %}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MobileApplication",
+  "name": "Nursly",
+  "operatingSystem": "iOS",
+  "applicationCategory": "ProductivityApplication",
+  "url": "{{ site.url }}",
+  "downloadUrl": "https://apps.apple.com/app/id{{ site.app_store_id }}",
+  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
+}
+</script>

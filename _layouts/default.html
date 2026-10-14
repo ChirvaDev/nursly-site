@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="{{ site.lang }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {% seo %}
+  {% feed_meta %}
+  <link rel="icon" href="{{ '/assets/favicon.png' | relative_url }}">
+  <link rel="apple-touch-icon" href="{{ '/assets/apple-touch-icon.png' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/style.css' | relative_url }}">
+  {%- if site.app_store_id and site.app_store_id != "" %}
+  <meta name="apple-itunes-app" content="app-id={{ site.app_store_id }}">
+  {%- endif %}
+  {%- if site.cloudflare_analytics_token and site.cloudflare_analytics_token != "" and jekyll.environment == "production" %}
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "{{ site.cloudflare_analytics_token }}"}'></script>
+  {%- endif %}
+</head>
+<body>
+  {% include header.html %}
+  {{ content }}
+  {% include footer.html %}
+</body>
+</html>

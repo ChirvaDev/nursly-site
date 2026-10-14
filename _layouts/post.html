@@ -1,0 +1,18 @@
+---
+layout: default
+---
+<main class="wrap doc post">
+  <p class="crumbs"><a href="{{ '/guides/' | relative_url }}">← Guides</a></p>
+  <article>
+    <h1>{{ page.title }}</h1>
+    <p class="updated"><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: '%B %-d, %Y' }}</time></p>
+    {{ content }}
+  </article>
+  <aside class="card cta">
+    <img src="{{ '/assets/img/icon.jpg' | relative_url }}" alt="Nursly app icon">
+    <div>
+      <p><strong>Try Nursly</strong><br>The shift calendar that shows what you actually earn.</p>
+      {% assign guide_ct = 'guide-' | append: page.slug %}{% include app-store-button.html ct=guide_ct %}
+    </div>
+  </aside>
+</main>
