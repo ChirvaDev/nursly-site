@@ -1,0 +1,5 @@
+* { box-sizing: border-box; margin: 0; }
+html, body { background: #fff; }
+body { font: 20px/1.3 -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif; color: #14151a; -webkit-font-smoothing: antialiased; }
+.f { width: 640px; padding: 40px; background: #fff; }
+:root { --accent: #5468ee; --night: #8f9cff; --sun: #ffd27a; --base: #e6e8f3; --muted: #6b6f84; --line: #e5e6f0; }

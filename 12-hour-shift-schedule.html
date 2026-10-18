@@ -1,0 +1,267 @@
+---
+layout: default
+title: "12-Hour Shift Schedule Generator (Pitman, DuPont)"
+description: Free 12-hour shift schedule generator for nurses. Pick Pitman, DuPont, 4 on 4 off or your own rotation and get a printable calendar with hours and overtime.
+permalink: /12-hour-shift-schedule
+search_title: "12-hour shift schedule generator"
+search_type: Tool
+search_keywords: "generator rotation pitman 2-2-3 dupont 4on4off 4 on 4 off 7 on 7 off 3 on 3 off every other weekend off 12 hour shifts roster rota schedule maker planner calendar print"
+---
+<main class="wrap calc-page">
+  <header class="calc-head">
+    <p class="eyebrow">Free tool</p>
+    <h1>12-hour shift schedule generator</h1>
+    <p class="lead">Pick a rotation and a start date to see your schedule for the months ahead — with hours per week, weekends off and overtime worked out. Print it or share the link with your team.</p>
+  </header>
+
+  <div class="calc sched" id="sched">
+    <section class="calc-card sched-form">
+      <h2>1. Your rotation</h2>
+      <div class="fields">
+        <label class="span2">Rotation pattern
+          <select id="pat">
+            <option value="pitman">Pitman (2-2-3) · 14 days</option>
+            <option value="rot223">2-2-3 rotating days &amp; nights · 28 days</option>
+            <option value="dupont">DuPont · 28 days</option>
+            <option value="4on4off">4 on, 4 off · 8 days</option>
+            <option value="2d2n4o">2 days, 2 nights, 4 off · 8 days</option>
+            <option value="3on3off">3 on, 3 off · 6 days</option>
+            <option value="eow">3×12 with every other weekend off · 14 days</option>
+            <option value="7on7off">7 on, 7 off · 14 days</option>
+            <option value="custom">Custom pattern…</option>
+          </select>
+        </label>
+        <label class="span2" id="customWrap" hidden>Custom pattern (up to 28 days) — D = day, N = night, O = off
+          <input id="custom" type="text" value="DDNNOOOO" maxlength="60" autocapitalize="characters" autocomplete="off" spellcheck="false">
+        </label>
+        <label id="typeWrap">Shifts are
+          <select id="type"><option value="D">Day shifts</option><option value="N">Night shifts</option></select>
+        </label>
+        <label>Shift length, hours<input id="hours" type="number" inputmode="decimal" min="1" max="24" step="0.5" value="12"></label>
+        <label>Rotation starts on<input id="start" type="date"></label>
+        <label>Pay week starts on
+          <select id="payStart">
+            <option value="0">Sunday</option><option value="1">Monday</option><option value="2">Tuesday</option><option value="3">Wednesday</option><option value="4">Thursday</option><option value="5">Friday</option><option value="6">Saturday</option>
+          </select>
+        </label>
+        <label>Show
+          <select id="months"><option value="3">3 months</option><option value="6" selected>6 months</option><option value="12">12 months</option></select>
+        </label>
+      </div>
+      <p class="hint sched-hint" id="startHint">The first day of your cycle — the first shift of a block.</p>
+      <div class="cycle" id="cycle" aria-label="One cycle of the rotation"></div>
+    </section>
+
+    <section class="calc-card calc-result" aria-live="polite">
+      <h2>2. Your year on this rotation</h2>
+      <div class="totals">
+        <div><span>Avg hours / week</span><strong id="avg">–</strong></div>
+        <div><span>Shifts / year</span><strong id="shifts">–</strong></div>
+        <div><span>Hours / year</span><strong id="hrs">–</strong></div>
+      </div>
+      <div class="totals small">
+        <div><span>Days off / year</span><strong id="off">–</strong></div>
+        <div><span>Full weekends off</span><strong id="we">–</strong></div>
+        <div><span>Pay weeks over 40 h</span><strong id="otw">–</strong></div>
+      </div>
+      <p class="fine" id="weekNote"></p>
+    </section>
+  </div>
+
+  <section class="sched-cal" aria-label="Schedule calendar">
+    <div class="cal-bar">
+      <ul class="legend">
+        <li><i class="lg-d"></i>Day</li>
+        <li><i class="lg-n"></i>Night</li>
+        <li><i class="lg-o"></i>Off</li>
+      </ul>
+      <div class="cal-actions">
+        <button type="button" class="btn-ghost" id="copy">Copy link</button>
+        <button type="button" class="btn-ghost" id="print">Print</button>
+      </div>
+    </div>
+    <div class="months" id="cal"></div>
+  </section>
+
+  <aside class="cta-band calc-cta">
+    <img src="{{ '/assets/img/icon.jpg' | relative_url }}" alt="Nursly app icon" width="72" height="72">
+    <h2>Put this rotation on your iPhone.</h2>
+    <p>Build the same cycle in Nursly's Rotation Builder and fill weeks of shifts in seconds — with your pay worked out, reminders and a shift alarm.</p>
+    {% include app-store-button.html ct="schedule" qr="qr-schedule" %}
+  </aside>
+
+  <article class="doc calc-doc">
+    <h2>How to use this generator</h2>
+    <p>Choose your rotation and the date your cycle starts — the first shift of a block. The calendar repeats the pattern from that day. Change the shift length if you don't work 12-hour shifts, and set the day your pay week starts to see how hours fall into each paycheck. The link updates as you go, so you can bookmark it or send it to your team.</p>
+
+    <h2>Common 12-hour rotations</h2>
+    <div class="table-wrap">
+      <table class="breakdown">
+        <thead><tr><th>Rotation</th><th>Cycle</th><th>Pattern</th><th>Avg / week</th></tr></thead>
+        <tbody>
+          <tr><td>Pitman (2-2-3)</td><td>14 days</td><td>2 on, 2 off, 3 on, 2 off, 2 on, 3 off</td><td>42 h</td></tr>
+          <tr><td>DuPont</td><td>28 days</td><td>4 nights, 3 off, 3 days, 1 off, 3 nights, 3 off, 4 days, 7 off</td><td>42 h</td></tr>
+          <tr><td>4 on, 4 off</td><td>8 days</td><td>4 on, 4 off</td><td>42 h</td></tr>
+          <tr><td>2 days, 2 nights, 4 off</td><td>8 days</td><td>2 days, 2 nights, 4 off</td><td>42 h</td></tr>
+          <tr><td>3 on, 3 off</td><td>6 days</td><td>3 on, 3 off</td><td>42 h</td></tr>
+          <tr><td>7 on, 7 off</td><td>14 days</td><td>7 on, 7 off</td><td>42 h</td></tr>
+          <tr><td>3×12, every other weekend off</td><td>14 days</td><td>3 shifts a week, alternate weekends</td><td>36 h</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Most 24/7 rotations average 42 hours a week because two 12-hour shifts cover each day across four teams. Hospitals that keep nurses at 36 hours usually use self-scheduling or a fixed three-shift week instead.</p>
+
+    <h2>Does your rotation earn overtime?</h2>
+    <p>A 42-hour average rarely means 42 hours every week. On Pitman, for example, most pay weeks alternate between 36 and 48 hours — and those extra 8 hours are usually paid as overtime. To see what a week like that pays with your night and weekend differentials, use the <a href="{{ '/nurse-overtime-calculator' | relative_url }}">nurse overtime calculator</a>.</p>
+
+    <h2>Questions</h2>
+    {% for item in site.data.schedule_faq %}
+    <p><strong>{{ item.q }}</strong><br>{{ item.a }}</p>
+    {% endfor %}
+  </article>
+</main>
+
+<script>
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var DAY = 864e5;
+  // D = day shift, N = night shift, O = off. "fixed" patterns can be switched to nights;
+  // "sunday" patterns are tied to weekdays, so the cycle snaps to the Sunday of the start week.
+  var PRESETS = {
+    pitman:    { p: 'DDOODDDOODDOOO', fixed: true },
+    rot223:    { p: 'DDOODDDOODDOOONNOONNNOONNOOO' },
+    dupont:    { p: 'NNNNOOODDDONNNOOODDDDOOOOOOO' },
+    '4on4off': { p: 'DDDDOOOO', fixed: true },
+    '2d2n4o':  { p: 'DDNNOOOO' },
+    '3on3off': { p: 'DDDOOO', fixed: true },
+    eow:       { p: 'ODODOODDODODOO', fixed: true, sunday: true },
+    '7on7off': { p: 'DDDDDDDOOOOOOO', fixed: true }
+  };
+  var MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  var DOW = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+
+  function dayNum(str) {
+    var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(str || '');
+    return m ? Date.UTC(+m[1], +m[2] - 1, +m[3]) / DAY : null;
+  }
+  function iso(n) { return new Date(n * DAY).toISOString().slice(0, 10); }
+  function dow(n) { return new Date(n * DAY).getUTCDay(); }
+  function todayNum() { var d = new Date(); return Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()) / DAY; }
+  function fmt(v) { return (Math.round(v * 10) / 10).toLocaleString('en-US'); }
+
+  function cleanCustom(s) { return (s || '').toUpperCase().replace(/[^DNO]/g, '').slice(0, 28); }
+
+  function pattern() {
+    var key = $('pat').value;
+    if (key === 'custom') return { p: cleanCustom($('custom').value) || 'DDDOOOO' };
+    var pr = PRESETS[key];
+    return { p: pr.fixed && $('type').value === 'N' ? pr.p.replace(/D/g, 'N') : pr.p, fixed: pr.fixed, sunday: pr.sunday };
+  }
+
+  function render() {
+    var key = $('pat').value, pr = pattern(), p = pr.p, L = p.length;
+    $('customWrap').hidden = key !== 'custom';
+    $('typeWrap').hidden = !(PRESETS[key] && PRESETS[key].fixed);
+    $('startHint').textContent = pr.sunday
+      ? 'Pick any day in a week (Sun–Sat) whose Saturday you work — the cycle starts on that Sunday.'
+      : 'The first day of your cycle — the first shift of a block.';
+
+    var h = Math.max(0, parseFloat($('hours').value) || 0);
+    var start = dayNum($('start').value);
+    if (start === null) { start = todayNum(); $('start').value = iso(start); }
+    if (pr.sunday) start -= dow(start);
+    var code = function (n) { return p.charAt(((n - start) % L + L) % L); };
+
+    // One cycle preview
+    var cyc = '';
+    for (var i = 0; i < L; i++) cyc += '<span class="c-' + p.charAt(i).toLowerCase() + '">' + (p.charAt(i) === 'O' ? '' : p.charAt(i)) + '</span>';
+    $('cycle').innerHTML = cyc;
+
+    // Year stats: 365 days from the start date
+    var shifts = 0, wkOff = 0, wkTotal = 0;
+    for (var n = start; n < start + 365; n++) {
+      if (code(n) !== 'O') shifts++;
+      if (dow(n) === 6 && n + 1 < start + 365) { wkTotal++; if (code(n) === 'O' && code(n + 1) === 'O') wkOff++; }
+    }
+    // Pay weeks: 52 weeks starting on the first pay-week start day on or after the start date
+    var ps = +$('payStart').value, w0 = start + ((ps - dow(start)) % 7 + 7) % 7;
+    var minW = Infinity, maxW = 0, otWeeks = 0, otHours = 0;
+    for (var w = 0; w < 52; w++) {
+      var c = 0;
+      for (var d = 0; d < 7; d++) if (code(w0 + w * 7 + d) !== 'O') c++;
+      var wh = c * h;
+      minW = Math.min(minW, wh); maxW = Math.max(maxW, wh);
+      if (wh > 40) { otWeeks++; otHours += wh - 40; }
+    }
+    $('avg').textContent = fmt(p.replace(/O/g, '').length / L * 7 * h) + ' h'; // exact cycle average
+    $('shifts').textContent = shifts;
+    $('hrs').textContent = fmt(shifts * h) + ' h';
+    $('off').textContent = 365 - shifts;
+    $('we').textContent = wkOff + ' of ' + wkTotal;
+    $('otw').textContent = otWeeks + ' of 52';
+    $('weekNote').textContent = (minW === maxW
+      ? 'Every pay week is ' + fmt(minW) + ' hours.'
+      : 'Pay weeks range from ' + fmt(minW) + ' to ' + fmt(maxW) + ' hours.') +
+      (otHours > 0 ? ' That is about ' + fmt(otHours) + ' hours over 40 a year — usually paid as overtime.' : '');
+
+    // Calendar
+    var first = new Date(start * DAY), y = first.getUTCFullYear(), m = first.getUTCMonth();
+    var months = +$('months').value, today = todayNum(), html = '';
+    for (var k = 0; k < months; k++) {
+      var mm = (m + k) % 12, yy = y + Math.floor((m + k) / 12);
+      var d1 = Date.UTC(yy, mm, 1) / DAY, dim = new Date(Date.UTC(yy, mm + 1, 0)).getUTCDate();
+      html += '<div class="month"><h3>' + MONTHS[mm] + ' ' + yy + '</h3><div class="mgrid">';
+      for (var j = 0; j < 7; j++) html += '<b>' + DOW[j].charAt(0) + '</b>';
+      for (var b = 0; b < dow(d1); b++) html += '<span></span>';
+      for (var dd = 0; dd < dim; dd++) {
+        var nn = d1 + dd, cl = nn < start ? 'pre' : 'c-' + code(nn).toLowerCase();
+        if (nn === today) cl += ' today';
+        html += '<span class="' + cl + '">' + (dd + 1) + '</span>';
+      }
+      html += '</div></div>';
+    }
+    $('cal').innerHTML = html;
+
+    // Shareable link (debounced: Safari throttles frequent replaceState calls)
+    var q = new URLSearchParams({ p: key, s: iso(dayNum($('start').value)), h: $('hours').value, w: ps, m: months });
+    if (key === 'custom') q.set('c', p);
+    if (PRESETS[key] && PRESETS[key].fixed) q.set('t', $('type').value);
+    clearTimeout(urlTimer);
+    urlTimer = setTimeout(function () {
+      try { history.replaceState(null, '', location.pathname + '?' + q.toString()); } catch (e) {}
+    }, 250);
+  }
+  var urlTimer;
+
+  // Restore state from the link
+  var q = new URLSearchParams(location.search);
+  if (q.get('p') && (PRESETS[q.get('p')] || q.get('p') === 'custom')) $('pat').value = q.get('p');
+  if (q.get('c')) $('custom').value = cleanCustom(q.get('c'));
+  if (q.get('t') === 'N') $('type').value = 'N';
+  if (dayNum(q.get('s')) !== null) $('start').value = q.get('s');
+  if (+q.get('h') > 0) $('hours').value = q.get('h');
+  if (/^[0-6]$/.test(q.get('w') || '')) $('payStart').value = q.get('w');
+  if (['3', '6', '12'].indexOf(q.get('m')) >= 0) $('months').value = q.get('m');
+
+  $('sched').addEventListener('input', render);
+  $('sched').addEventListener('change', render);
+  $('print').addEventListener('click', function () { window.print(); });
+  $('copy').addEventListener('click', function () {
+    var btn = this;
+    var done = function () { btn.textContent = 'Link copied'; setTimeout(function () { btn.textContent = 'Copy link'; }, 1600); };
+    if (navigator.clipboard) navigator.clipboard.writeText(location.href).then(done, function () { prompt('Copy this link:', location.href); });
+    else prompt('Copy this link:', location.href);
+  });
+  render();
+})();
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [{% for item in site.data.schedule_faq %}
+    {"@type": "Question", "name": {{ item.q | jsonify }}, "acceptedAnswer": {"@type": "Answer", "text": {{ item.a | jsonify }}}}{% unless forloop.last %},{% endunless %}{% endfor %}
+  ]
+}
+</script>

@@ -18,6 +18,8 @@ app_store_pt: "127999228"
 # Cloudflare Web Analytics token (Cloudflare -> Analytics & Logs -> Web Analytics -> JS snippet). Empty = no analytics.
 cloudflare_analytics_token: "428dda28f7e64c9c869b08dcc181cec4"
 
+# Shown as the author of guides in Google (jekyll-seo-tag).
+author: Nursly
 logo: /assets/apple-touch-icon.png
 social:
   name: Nursly

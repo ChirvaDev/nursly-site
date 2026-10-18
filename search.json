@@ -1,0 +1,18 @@
+---
+layout: null
+permalink: /search.json
+sitemap: false
+---
+{%- assign sep = "" -%}
+[
+{%- for p in site.pages -%}
+  {%- if p.search_title -%}
+  {{ sep }}{"t":{{ p.search_title | jsonify }},"u":{{ p.url | relative_url | jsonify }},"y":{{ p.search_type | jsonify }},"d":{{ p.description | jsonify }},"k":{{ p.search_keywords | jsonify }}}
+  {%- assign sep = "," -%}
+  {%- endif -%}
+{%- endfor -%}
+{%- for p in site.posts -%}
+  {{ sep }}{"t":{{ p.title | jsonify }},"u":{{ p.url | relative_url | jsonify }},"y":"Guide","d":{{ p.description | jsonify }},"k":{{ p.search_keywords | jsonify }},"c":{{ p.content | strip_html | normalize_whitespace | truncatewords: 600, "" | jsonify }}}
+  {%- assign sep = "," -%}
+{%- endfor -%}
+]

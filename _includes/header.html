@@ -9,6 +9,9 @@
       <a href="{{ '/support' | relative_url }}"{% if page.url == '/support' %} aria-current="page"{% endif %}>Support</a>
     </nav>
     <div class="header-actions">
+      <button type="button" class="search-btn" id="searchOpen" aria-label="Search the site" title="Search (/)">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+      </button>
       {%- if site.app_store_id and site.app_store_id != "" %}
       <a class="btn btn-sm" href="{% include app-store-url.html ct="site-header" %}">Download</a>
       {%- else %}

@@ -1,0 +1,8 @@
+{%- comment -%}Usage: {% include figure.html src="/assets/blog/slug/name" w=1600 h=900 alt="…" caption="…" %} — expects name.webp + name.jpg{%- endcomment -%}
+<figure class="post-fig">
+  <picture>
+    <source type="image/webp" srcset="{{ include.src | append: '.webp' | relative_url }}">
+    <img src="{{ include.src | append: '.jpg' | relative_url }}" alt="{{ include.alt | escape }}" width="{{ include.w }}" height="{{ include.h }}" loading="lazy" decoding="async">
+  </picture>
+  {%- if include.caption %}<figcaption>{{ include.caption }}</figcaption>{% endif %}
+</figure>

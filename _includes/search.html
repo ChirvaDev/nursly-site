@@ -1,0 +1,9 @@
+<dialog class="search" id="search" aria-label="Search nursly.app">
+  <form method="dialog" class="search-box" role="search">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+    <input id="searchInput" type="search" placeholder="Search tools and guides…" autocomplete="off" spellcheck="false" aria-controls="searchResults" aria-label="Search">
+    <button type="submit" class="search-close" value="close" aria-label="Close search">Esc</button>
+  </form>
+  <div class="search-results" id="searchResults" role="listbox"></div>
+</dialog>
+<script src="{{ '/assets/search.js' | relative_url }}" data-index="{{ '/search.json' | relative_url }}" defer></script>

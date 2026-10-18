@@ -1,8 +1,14 @@
+{%- comment -%}Usage: {% include app-store-button.html ct="site-hero" qr="qr-hero" %} — qr (optional) adds a QR code for desktop visitors from assets/qr/<qr>.svg (generate with _tools/make_qr.py).{%- endcomment -%}
 {%- if site.app_store_id and site.app_store_id != "" -%}
+{%- if include.qr %}<div class="store-cta">{% endif -%}
 <a class="btn btn-store" href="{% include app-store-url.html ct=include.ct %}">
   <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.37 12.73c-.02-2.3 1.88-3.4 1.96-3.46-1.07-1.56-2.73-1.78-3.32-1.8-1.41-.14-2.76.83-3.48.83-.72 0-1.82-.81-3-.79-1.54.02-2.96.9-3.76 2.27-1.6 2.78-.41 6.9 1.15 9.16.76 1.1 1.67 2.35 2.86 2.3 1.15-.05 1.58-.74 2.97-.74 1.38 0 1.77.74 2.98.72 1.23-.02 2.01-1.12 2.77-2.23.87-1.28 1.23-2.52 1.25-2.58-.03-.01-2.4-.92-2.42-3.66zM14.1 5.98c.63-.77 1.06-1.83.94-2.89-.91.04-2.01.61-2.66 1.37-.58.67-1.1 1.76-.96 2.8 1.02.08 2.05-.52 2.68-1.28z"/></svg>
   Download on the App Store
 </a>
+{%- if include.qr %}
+<div class="store-qr"><img src="{{ '/assets/qr/' | append: include.qr | append: '.svg' | relative_url }}" alt="QR code: download Nursly from the App Store" width="88" height="88" loading="lazy"><span>Or scan with your<br>iPhone camera</span></div>
+</div>
+{%- endif %}
 {%- else -%}
 <span class="btn btn-soon" aria-disabled="true">
   <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.37 12.73c-.02-2.3 1.88-3.4 1.96-3.46-1.07-1.56-2.73-1.78-3.32-1.8-1.41-.14-2.76.83-3.48.83-.72 0-1.82-.81-3-.79-1.54.02-2.96.9-3.76 2.27-1.6 2.78-.41 6.9 1.15 9.16.76 1.1 1.67 2.35 2.86 2.3 1.15-.05 1.58-.74 2.97-.74 1.38 0 1.77.74 2.98.72 1.23-.02 2.01-1.12 2.77-2.23.87-1.28 1.23-2.52 1.25-2.58-.03-.01-2.4-.92-2.42-3.66zM14.1 5.98c.63-.77 1.06-1.83.94-2.89-.91.04-2.01.61-2.66 1.37-.58.67-1.1 1.76-.96 2.8 1.02.08 2.05-.52 2.68-1.28z"/></svg>

@@ -1,0 +1,14 @@
+- q: What is the most common 12-hour shift schedule for nurses?
+  a: Many hospital nurses work three 12-hour shifts a week (36 hours), with the days set by self-scheduling or by the unit. Rotating patterns such as Pitman (2-2-3), DuPont, 4 on 4 off and 2 days / 2 nights / 4 off are common where a unit needs fixed teams covering 24/7.
+- q: What is a Pitman (2-2-3) schedule?
+  a: "A 14-day cycle: 2 days on, 2 off, 3 on, 2 off, 2 on, 3 off. With 12-hour shifts it averages 42 hours a week, and every other weekend is a 3-day weekend off. Depending on how your pay week lines up, you usually work 36 hours one week and 48 the next."
+- q: What is the DuPont schedule?
+  a: "A 28-day rotating cycle for four teams: 4 nights, 3 off, 3 days, 1 off, 3 nights, 3 off, 4 days, then 7 days off in a row. It averages 42 hours a week. The long break is popular, but switching between days and nights is hard on sleep."
+- q: Which 12-hour schedule gives every other weekend off?
+  a: Pitman (2-2-3), started on a Monday, gives a 3-day weekend off every other week. For a 36-hour week, the "3×12 with every other weekend off" option in this generator works one weekend, then has the next one off.
+- q: Will a 12-hour rotation give me overtime?
+  a: In the US, overtime under the FLSA is usually counted per 7-day pay week. Patterns that average 42 hours, like Pitman, DuPont or 4 on 4 off, often put you over 40 hours in some weeks and under in others. Set your pay week start day above to see how many overtime hours a year your pattern creates. Some hospitals use the 8/80 system instead, and union contracts may differ.
+- q: How are night shifts that cross midnight counted?
+  a: In this generator, each shift is counted on the day it starts — the same way most schedules and the Nursly app show it. A Friday night shift therefore counts as a Friday shift, even though you finish on Saturday morning.
+- q: Can I put this rotation on my iPhone?
+  a: Yes. In the Nursly app, open Add Shift → Rotations, build the same cycle of day, night and off days (or pick a preset like 4 on / 4 off or 2 days / 2 nights / 4 off), choose your start date and generate 4, 8 or 12 weeks. Every shift then appears in your calendar with pay, reminders and the shift alarm.

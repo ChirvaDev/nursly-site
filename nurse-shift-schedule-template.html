@@ -1,0 +1,83 @@
+---
+layout: default
+title: Free Printable Nurse Shift Schedule Template (2027 PDF)
+description: Free printable nurse shift schedule template and 2027 shift calendar (PDF, Letter and A4) with daily shift and hours boxes and monthly totals.
+permalink: /nurse-shift-schedule-template
+search_title: "Printable nurse shift schedule template (PDF)"
+search_type: Tool
+search_keywords: "template printable pdf print download calendar 2027 blank monthly schedule paper excel letter a4"
+---
+<main class="wrap calc-page tpl-page">
+  <header class="calc-head">
+    <p class="eyebrow">Free printable</p>
+    <h1>Nurse shift schedule template</h1>
+    <p class="lead">A free 2027 nurse shift calendar and a blank monthly schedule you can print and reuse. Write in each shift and its hours, then add up your month — shifts, overtime and estimated pay.</p>
+  </header>
+
+  <div class="tpl-grid">
+    <article class="tpl-card">
+      <a class="tpl-media" href="{{ '/assets/downloads/nurse-shift-calendar-2027-letter.pdf' | relative_url }}">
+        <img src="{{ '/assets/img/templates/calendar-2027-month.png' | relative_url }}" alt="2027 nurse shift calendar: monthly page with shift and hours boxes and a monthly totals column" width="1100" height="850">
+      </a>
+      <div class="tpl-body">
+        <h2>2027 nurse shift calendar</h2>
+        <p>13 pages: a year-at-a-glance page plus one page per month with daily shift and hours boxes and monthly totals.</p>
+        <div class="tpl-dl">
+          <a class="btn" href="{{ '/assets/downloads/nurse-shift-calendar-2027-letter.pdf' | relative_url }}" download>Download PDF · Letter</a>
+          <a class="btn-ghost" href="{{ '/assets/downloads/nurse-shift-calendar-2027-a4.pdf' | relative_url }}" download>A4</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="tpl-card">
+      <a class="tpl-media" href="{{ '/assets/downloads/nurse-shift-schedule-template-letter.pdf' | relative_url }}">
+        <img src="{{ '/assets/img/templates/blank-month.png' | relative_url }}" alt="Blank monthly nurse shift schedule template with write-in month and year" width="1100" height="850" loading="lazy">
+      </a>
+      <div class="tpl-body">
+        <h2>Blank monthly template</h2>
+        <p>One undated page — write in the month and dates, and print a fresh copy whenever you need it, any year.</p>
+        <div class="tpl-dl">
+          <a class="btn" href="{{ '/assets/downloads/nurse-shift-schedule-template-letter.pdf' | relative_url }}" download>Download PDF · Letter</a>
+          <a class="btn-ghost" href="{{ '/assets/downloads/nurse-shift-schedule-template-a4.pdf' | relative_url }}" download>A4</a>
+        </div>
+      </div>
+    </article>
+  </div>
+  <p class="fine center">Letter (US &amp; Canada) weeks start on Sunday · A4 (UK, Australia &amp; elsewhere) weeks start on Monday · Landscape</p>
+
+  <aside class="cta-band calc-cta">
+    <img src="{{ '/assets/img/icon.jpg' | relative_url }}" alt="Nursly app icon" width="72" height="72">
+    <h2>Rather skip the paperwork?</h2>
+    <p>Nursly is the same schedule on your iPhone — it adds up your hours, overtime and pay as you go, and wakes you up for every shift.</p>
+    {% include app-store-button.html ct="template" qr="qr-template" %}
+  </aside>
+
+  <article class="doc calc-doc">
+    <h2>What's inside</h2>
+    <ul>
+      <li><strong>Year at a glance (2027):</strong> all 12 months on one page — mark each day with a shift code to see your whole year, vacation and stretches of nights.</li>
+      <li><strong>Monthly pages:</strong> a box for every day with space for the shift and paid hours. Weekends are shaded so weekend shifts stand out.</li>
+      <li><strong>Monthly totals:</strong> shifts worked, total hours, night and weekend shifts, overtime hours, holiday hours and estimated pay.</li>
+      <li><strong>Shift codes:</strong> D = day, N = night, E = evening, O = off, OC = on-call, PTO = paid time off.</li>
+    </ul>
+
+    <h2>How to use the template</h2>
+    <p>When your schedule is posted, write the shift code in each day and the paid hours below it (after unpaid breaks). At the end of the month, add up your shifts and hours and fill in the totals. To estimate your pay with night and weekend differentials and overtime, use the <a href="{{ '/nurse-overtime-calculator' | relative_url }}">nurse overtime calculator</a>.</p>
+    <p>On a fixed rotation such as Pitman, DuPont or 4 on 4 off? The <a href="{{ '/12-hour-shift-schedule' | relative_url }}">12-hour shift schedule generator</a> lays out your whole year — copy it across, or print the generator's calendar.</p>
+
+    <h2>Questions</h2>
+    {% for item in site.data.template_faq %}
+    <p><strong>{{ item.q }}</strong><br>{{ item.a }}</p>
+    {% endfor %}
+  </article>
+</main>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [{% for item in site.data.template_faq %}
+    {"@type": "Question", "name": {{ item.q | jsonify }}, "acceptedAnswer": {"@type": "Answer", "text": {{ item.a | jsonify }}}}{% unless forloop.last %},{% endunless %}{% endfor %}
+  ]
+}
+</script>

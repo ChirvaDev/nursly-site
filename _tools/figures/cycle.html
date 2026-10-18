@@ -1,0 +1,17 @@
+<meta charset="utf-8"><link rel="stylesheet" href="v2.css">
+<style>
+.g { display: grid; grid-template-columns: repeat(7, 1fr); gap: 10px; }
+.h { text-align: center; font-size: 20px; font-weight: 600; color: var(--muted); }
+.h.we { color: var(--accent); }
+.c { height: 64px; border-radius: 14px; background: #f6f7fb; }
+.c.on { background: var(--sun); }
+.wk { grid-column: 1 / -1; font-size: 19px; font-weight: 600; color: var(--muted); margin: 8px 0 -2px; }
+</style>
+<div class="f" id="f"><div class="g" id="g"></div></div>
+<script>
+var P='DDOODDDOODDOOO', D=['M','T','W','T','F','S','S'], h='';
+D.forEach(function(d,i){ h+='<div class="h'+(i>4?' we':'')+'">'+d+'</div>'; });
+h+='<div class="wk">Week 1</div>'; for(var i=0;i<7;i++) h+='<div class="c'+(P[i]==='D'?' on':'')+'"></div>';
+h+='<div class="wk">Week 2</div>'; for(var i=7;i<14;i++) h+='<div class="c'+(P[i]==='D'?' on':'')+'"></div>';
+document.getElementById('g').innerHTML=h;
+</script>

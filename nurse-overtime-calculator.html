@@ -1,8 +1,11 @@
 ---
 layout: default
 title: Nurse Overtime & Shift Differential Calculator
-description: Free nurse pay calculator. Work out your weekly pay with night and weekend differentials, holiday pay and overtime calculated on your full rate — plus estimated take-home.
+description: "Free nurse pay calculator: weekly pay with night and weekend differentials, holiday pay and overtime on your full rate, plus estimated take-home pay."
 permalink: /nurse-overtime-calculator
+search_title: "Nurse overtime & shift differential calculator"
+search_type: Tool
+search_keywords: "calculator pay overtime ot differential night weekend holiday paycheck salary wage hourly rate take-home net gross tax estimate"
 ---
 <main class="wrap calc-page">
   <header class="calc-head">
@@ -63,7 +66,7 @@ permalink: /nurse-overtime-calculator
     <img src="{{ '/assets/img/icon.jpg' | relative_url }}" alt="Nursly app icon" width="72" height="72">
     <h2>Stop doing this math every week.</h2>
     <p>Nursly applies your rates to every shift automatically and shows your gross and take-home pay as you go.</p>
-    {% include app-store-button.html ct="calculator" %}
+    {% include app-store-button.html ct="calculator" qr="qr-calculator" %}
   </aside>
 
   <article class="doc calc-doc">
@@ -81,6 +84,7 @@ permalink: /nurse-overtime-calculator
 
     <h2>Do shift differentials count toward overtime?</h2>
     <p>In the United States, the Fair Labor Standards Act generally requires shift differentials to be included in the "regular rate" used to calculate overtime, which is how this calculator works. Rules can differ by employer, union contract, state and country — for example, some hospitals use the 8/80 system, and California also has daily overtime. When in doubt, check your contract or payroll department.</p>
+    <p>Working a 12-hour rotation? The <a href="{{ '/12-hour-shift-schedule' | relative_url }}">12-hour shift schedule generator</a> shows which pay weeks go over 40 hours.</p>
 
     <h2>Questions</h2>
     {% for item in site.data.calculator_faq %}

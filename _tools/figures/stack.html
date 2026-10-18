@@ -1,0 +1,15 @@
+<meta charset="utf-8"><link rel="stylesheet" href="v2.css">
+<style>
+.r { display: grid; grid-template-columns: 1fr 90px; align-items: center; gap: 16px; }
+.r + .r { margin-top: 26px; }
+.lbl { grid-column: 1 / -1; font-size: 23px; color: var(--muted); margin-bottom: -6px; }
+.bar { display: flex; height: 50px; border-radius: 12px; overflow: hidden; background: #f6f7fb; }
+.bar span { display: grid; place-items: center; font-size: 19px; font-weight: 700; }
+.b { background: var(--base); color: #4a4e63; } .n { background: var(--night); color: #fff; } .w { background: var(--sun); color: #6b4300; }
+.v { font-size: 34px; font-weight: 800; letter-spacing: -0.03em; text-align: right; }
+</style>
+<div class="f" id="f">
+  <div class="r"><div class="lbl">Day shift</div><div class="bar"><span class="b" style="width:80%">$40</span></div><div class="v">$40</div></div>
+  <div class="r"><div class="lbl">Night shift</div><div class="bar"><span class="b" style="width:80%">$40</span><span class="n" style="width:12%">+6</span></div><div class="v">$46</div></div>
+  <div class="r"><div class="lbl">Saturday night</div><div class="bar"><span class="b" style="width:80%">$40</span><span class="n" style="width:12%">+6</span><span class="w" style="width:8%">+4</span></div><div class="v">$50</div></div>
+</div>

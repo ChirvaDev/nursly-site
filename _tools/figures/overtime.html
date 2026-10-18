@@ -1,0 +1,19 @@
+<meta charset="utf-8"><link rel="stylesheet" href="v2.css">
+<style>
+.g { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.c { border-radius: 20px; padding: 26px 24px; }
+.c.ok { background: #eef0ff; } .c.no { background: #f6f7fb; }
+.c small { display: block; font-size: 21px; color: var(--muted); margin-bottom: 8px; }
+.c b { display: block; font-size: 48px; letter-spacing: -0.04em; line-height: 1; }
+.c.ok b { color: var(--accent); } .c.no b { color: #8a8ea3; }
+.c span { display: block; font-size: 19px; color: var(--muted); margin-top: 10px; }
+.diff { margin-top: 20px; text-align: center; font-size: 22px; color: var(--muted); }
+.diff b { color: #d64545; font-size: 26px; }
+</style>
+<div class="f" id="f">
+  <div class="g">
+    <div class="c ok"><small>Overtime on full rate</small><b>$2,392</b><span>8 h × $69</span></div>
+    <div class="c no"><small>On base rate only</small><b>$2,320</b><span>8 h × $60</span></div>
+  </div>
+  <p class="diff"><b>$72</b> difference in one 48-hour week</p>
+</div>
