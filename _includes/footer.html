@@ -10,7 +10,8 @@
         <a href="{{ '/#features' | relative_url }}">Features</a>
         <a href="{{ '/pricing' | relative_url }}"{% if page.url == '/pricing' %} aria-current="page"{% endif %}>Pricing</a>
         {%- if site.app_store_id and site.app_store_id != "" %}
-        <a href="{% include app-store-url.html ct="site-footer" %}">Download for iPhone</a>
+        {%- capture ctk %}{% include ct-key.html %}{% endcapture %}{% assign footer_ct = ctk | append: "-footer" %}
+        <a href="{% include app-store-url.html ct=footer_ct %}">Download for iPhone</a>
         {%- endif %}
         <a href="{{ '/guides/' | relative_url }}">Guides</a>
         <a href="{{ '/nurse-overtime-calculator' | relative_url }}">Overtime calculator</a>

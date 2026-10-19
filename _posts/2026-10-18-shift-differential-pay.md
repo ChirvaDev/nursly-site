@@ -4,6 +4,7 @@ description: "What shift differential pay is, how night, evening and weekend dif
 search_keywords: "differential night weekend evening holiday premium pay overtime regular rate flsa unsocial hours penalty rates shift premium"
 image: /assets/blog/shift-differential-pay/cover.jpg
 cover: true
+topic: pay
 ---
 
 **Shift differential pay is extra money on top of your base hourly rate for working less popular hours** — usually nights, evenings, weekends and sometimes holidays. For nurses, differentials can add a noticeable amount to every paycheck, so it's worth knowing exactly how yours are calculated.

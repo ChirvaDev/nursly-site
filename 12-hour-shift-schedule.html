@@ -6,6 +6,7 @@ permalink: /12-hour-shift-schedule
 search_title: "12-hour shift schedule generator"
 search_type: Tool
 search_keywords: "generator rotation pitman 2-2-3 dupont 4on4off 4 on 4 off 7 on 7 off 3 on 3 off every other weekend off 12 hour shifts roster rota schedule maker planner calendar print"
+ct_key: t-schedule
 ---
 <main class="wrap calc-page">
   <header class="calc-head">
@@ -87,7 +88,7 @@ search_keywords: "generator rotation pitman 2-2-3 dupont 4on4off 4 on 4 off 7 on
     <img src="{{ '/assets/img/icon.jpg' | relative_url }}" alt="Nursly app icon" width="72" height="72">
     <h2>Put this rotation on your iPhone.</h2>
     <p>Build the same cycle in Nursly's Rotation Builder and fill weeks of shifts in seconds — with your pay worked out, reminders and a shift alarm.</p>
-    {% include app-store-button.html ct="schedule" qr="qr-schedule" %}
+    {% include app-store-button.html ct="t-schedule-cta" qr="qr-schedule" %}
   </aside>
 
   <article class="doc calc-doc">
@@ -119,6 +120,7 @@ search_keywords: "generator rotation pitman 2-2-3 dupont 4on4off 4 on 4 off 7 on
     <p><strong>{{ item.q }}</strong><br>{{ item.a }}</p>
     {% endfor %}
   </article>
+  <div class="calc-doc">{% include related.html %}</div>
 </main>
 
 <script>

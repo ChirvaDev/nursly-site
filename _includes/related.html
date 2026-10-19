@@ -1,0 +1,30 @@
+{%- comment -%}
+"Keep reading" block at the end of guides and tool pages: up to 3 other guides (same topic first, then newest)
+and every free tool except the current page. Set topic: in a guide's front matter to group related guides.
+Usage: {% include related.html %}
+{%- endcomment -%}
+{%- assign picks = "" | split: "" -%}
+{%- if page.topic -%}
+  {%- for p in site.posts -%}{%- if p.url != page.url and p.topic == page.topic and picks.size < 3 -%}{%- assign picks = picks | push: p -%}{%- endif -%}{%- endfor -%}
+{%- endif -%}
+{%- for p in site.posts -%}{%- if p.url != page.url and picks.size < 3 -%}{%- unless picks contains p -%}{%- assign picks = picks | push: p -%}{%- endunless -%}{%- endif -%}{%- endfor -%}
+<section class="related" aria-label="Related guides and tools">
+  {%- if picks.size > 0 %}
+  <div>
+    <h2 class="g-title">Keep reading</h2>
+    <ul class="related-list">
+      {%- for p in picks %}
+      <li><a href="{{ p.url | relative_url }}"><strong>{{ p.title }}</strong>{% if p.description %}<span>{{ p.description | truncate: 110 }}</span>{% endif %}</a></li>
+      {%- endfor %}
+    </ul>
+  </div>
+  {%- endif %}
+  <div>
+    <h2 class="g-title">Free tools</h2>
+    <ul class="related-list">
+      {%- for t in site.data.tools %}{% unless t.url == page.url %}
+      <li><a href="{{ t.url | relative_url }}"><span class="related-ic"><svg viewBox="0 0 24 24" aria-hidden="true">{{ t.icon }}</svg></span><strong>{{ t.title | replace: "&", "&amp;" }}</strong><span>{{ t.desc }}</span></a></li>
+      {%- endunless %}{% endfor %}
+    </ul>
+  </div>
+</section>

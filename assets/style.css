@@ -605,3 +605,28 @@ h1, h2, h3 { letter-spacing: -0.025em; line-height: 1.12; }
 }
 .post-fig img { box-shadow: 0 1px 2px rgba(20,21,26,.03), 0 6px 20px rgba(84,104,238,.06); }
 @media (min-width: 900px) { .post-fig { margin: 32px 0; } }
+
+/* ---------- In-article CTA + related block ---------- */
+.cta-inline { display: grid; grid-template-columns: 48px 1fr; gap: 14px 16px; align-items: center; background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 18px 20px; margin: 36px 0; font-size: 16px; line-height: 1.5; }
+.cta-inline img { width: 48px; height: 48px; border-radius: 12px !important; align-self: start; }
+.cta-inline p { margin: 0; color: var(--muted); }
+.cta-inline .cta-inline-title { color: var(--text); font-weight: 600; margin-bottom: 2px; }
+.cta-inline .btn { grid-column: 1 / -1; justify-self: start; text-decoration: none !important; }
+@media (min-width: 640px) {
+  .cta-inline { grid-template-columns: 48px 1fr auto; }
+  .cta-inline .btn { grid-column: auto; }
+  .cta-inline img { align-self: center; }
+}
+.related .g-title { font-size: 13px; margin: 0 0 14px; letter-spacing: .08em; }
+.related { display: grid; gap: 32px; max-width: var(--narrow); margin: 56px auto 0; }
+.related-list { list-style: none; margin: 0; padding: 0 !important; display: grid; gap: 10px; }
+.related-list li { margin: 0; }
+.related-list a { display: grid; grid-template-columns: 1fr; gap: 2px 14px; align-items: center; background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 16px 20px; color: var(--text); transition: border-color .15s ease; }
+.related-list a:hover { text-decoration: none; border-color: var(--accent); }
+.related-list a:has(.related-ic) { grid-template-columns: 40px 1fr; }
+.related-list strong { font-size: 16px; line-height: 1.35; letter-spacing: -0.01em; }
+.related-list span:not(.related-ic) { color: var(--muted); font-size: 14px; line-height: 1.45; }
+.related-list a:has(.related-ic) span:not(.related-ic) { grid-column: 2; }
+.related-ic { grid-row: span 2; width: 40px; height: 40px; border-radius: 12px; background: var(--accent-soft); color: var(--accent); display: grid; place-items: center; }
+.related-ic svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+@media print { .cta-inline, .related { display: none !important; } }

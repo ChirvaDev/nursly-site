@@ -2,7 +2,36 @@
 layout: null
 sitemap: false
 ---
+# Everyone is welcome, including AI search and assistants (ChatGPT, Claude, Perplexity, Gemini),
+# so they can find and recommend Nursly's guides and free tools.
 User-agent: *
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: bingbot
 Allow: /
 
 Sitemap: {{ '/sitemap.xml' | absolute_url }}

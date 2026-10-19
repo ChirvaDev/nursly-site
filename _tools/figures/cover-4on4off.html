@@ -1,0 +1,14 @@
+<meta charset="utf-8"><link rel="stylesheet" href="v2.css">
+<style>
+.cv { width: 600px; height: 315px; display: grid; place-items: center; background: linear-gradient(180deg, #f5f6ff 0%, #e2e5fe 100%); position: relative; }
+.card { width: 380px; background: #fff; border-radius: 22px; padding: 18px 22px; box-shadow: 0 24px 50px -24px rgba(84,104,238,.5); }
+.g { display: grid; grid-template-columns: repeat(8, 1fr); gap: 6px; } .g + .g { margin-top: 6px; }
+.g i { height: 30px; border-radius: 7px; background: #f3f4fa; display: block; } .g i.d { background: var(--sun); }
+.logo { position: absolute; left: 22px; top: 20px; width: 30px; height: 30px; border-radius: 8px; }
+</style>
+<div class="cv"><img class="logo" src="icon.jpg"><div class="card" id="c"></div></div>
+<script>
+var h='';
+for (var r=0;r<5;r++){ h+='<div class="g">'; for (var i=0;i<8;i++) h+='<i class="'+(i<4?'d':'')+'"></i>'; h+='</div>'; }
+document.getElementById('c').innerHTML=h;
+</script>

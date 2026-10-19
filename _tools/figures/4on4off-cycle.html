@@ -1,0 +1,16 @@
+<meta charset="utf-8"><link rel="stylesheet" href="v2.css">
+<style>
+.g { display: grid; grid-template-columns: 72px repeat(7, 1fr); gap: 8px; align-items: center; }
+.h { text-align: center; font-size: 20px; font-weight: 600; color: var(--muted); }
+.h.we { color: var(--accent); }
+.wk { font-size: 18px; font-weight: 600; color: var(--muted); }
+.c { height: 40px; border-radius: 10px; background: #f6f7fb; }
+.c.d { background: var(--sun); }
+</style>
+<div class="f" id="f"><div class="g" id="g"></div></div>
+<script>
+var P='DDDDOOOO', D=['M','T','W','T','F','S','S'], h='<div></div>';
+D.forEach(function(d,i){ h+='<div class="h'+(i>4?' we':'')+'">'+d+'</div>'; });
+for (var w=0; w<8; w++) { h+='<div class="wk">Wk '+(w+1)+'</div>'; for (var i=w*7;i<w*7+7;i++) h+='<div class="c'+(P[i%8]==='D'?' d':'')+'"></div>'; }
+document.getElementById('g').innerHTML=h;
+</script>

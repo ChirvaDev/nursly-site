@@ -10,21 +10,14 @@ sitemap: false
     <p>The page you're looking for doesn't exist or has moved. Try one of these instead:</p>
   </header>
   <div class="tool-grid">
-    <a class="tool" href="{{ '/nurse-overtime-calculator' | relative_url }}">
-      <h3>Overtime &amp; differential calculator</h3>
-      <p>A week of pay with night, weekend, holiday and overtime rates.</p>
-      <span class="tool-go">Open calculator →</span>
+    {%- for t in site.data.tools %}
+    <a class="tool" href="{{ t.url | relative_url }}">
+      <span class="tool-ic"><svg viewBox="0 0 24 24" aria-hidden="true">{{ t.icon }}</svg></span>
+      <h3>{{ t.title | replace: "&", "&amp;" }}</h3>
+      <p>{{ t.desc }}</p>
+      <span class="tool-go">{{ t.go }} →</span>
     </a>
-    <a class="tool" href="{{ '/12-hour-shift-schedule' | relative_url }}">
-      <h3>12-hour schedule generator</h3>
-      <p>Pitman, DuPont, 4 on 4 off or your own rotation as a calendar.</p>
-      <span class="tool-go">Make a schedule →</span>
-    </a>
-    <a class="tool" href="{{ '/guides/' | relative_url }}">
-      <h3>Guides &amp; free tools</h3>
-      <p>Everything on shift schedules, overtime and nurse pay.</p>
-      <span class="tool-go">Browse guides →</span>
-    </a>
+    {%- endfor %}
   </div>
-  <p class="faq-more"><a href="{{ '/' | relative_url }}">← Back to the home page</a></p>
+  <p class="faq-more"><a href="{{ '/guides/' | relative_url }}">Browse all guides →</a> · <a href="{{ '/' | relative_url }}">Home page</a></p>
 </main>

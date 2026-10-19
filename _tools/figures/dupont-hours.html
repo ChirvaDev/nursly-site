@@ -1,0 +1,22 @@
+<meta charset="utf-8"><link rel="stylesheet" href="v2.css">
+<style>
+.ch { position: relative; height: 270px; display: flex; align-items: flex-end; gap: 22px; padding-left: 62px; }
+.col { flex: 1; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; position: relative; z-index: 1; }
+.v { font-size: 22px; font-weight: 800; color: #fff; text-align: center; padding-top: 10px; letter-spacing: -0.02em; }
+.reg { flex: 1; }
+.bar { width: 100%; border-radius: 10px 10px 4px 4px; background: var(--night); overflow: hidden; display: flex; flex-direction: column; }
+.ot { background: var(--accent); }
+.zero { font-size: 22px; font-weight: 800; color: var(--muted); padding-bottom: 6px; }
+.line { position: absolute; left: 0; right: 0; border-top: 2px dashed #d64545; }
+.line span { position: absolute; left: 0; top: -12px; font-size: 19px; font-weight: 700; color: #d64545; background: #fff; padding-right: 6px; }
+</style>
+<div class="f" id="f"><div class="ch" id="c"></div></div>
+<script>
+var c=document.getElementById('c'), max=76, H=260;
+c.innerHTML='<div class="line" style="bottom:'+(40/max*H)+'px"><span>40 h</span></div>';
+[48,72,48,0].forEach(function(h){
+  var ot=Math.max(0,h-40);
+  if(!h){ c.innerHTML+='<div class="col"><div class="zero">0 h</div></div>'; return; }
+  c.innerHTML+='<div class="col"><div class="bar" style="height:'+(h/max*H)+'px">'+(ot?'<div class="ot" style="height:'+(ot/max*H)+'px"></div>':'')+'<div class="reg"><div class="v">'+h+' h</div></div></div></div>';
+});
+</script>

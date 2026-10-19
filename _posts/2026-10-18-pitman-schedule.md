@@ -4,6 +4,7 @@ description: "How the Pitman (2-2-3) schedule works for nurses: the 14-day patte
 search_keywords: "pitman 2-2-3 rotation 12 hour shifts every other weekend off overtime dupont 4 on 4 off schedule"
 image: /assets/blog/pitman-schedule/cover.jpg
 cover: true
+topic: schedules
 ---
 
 **The Pitman schedule is a 14-day rotation of 12-hour shifts: 2 days on, 2 off, 3 on, 2 off, 2 on, 3 off.** It's also called the **2-2-3 schedule**. You never work more than three shifts in a row, you get every other weekend off, and you average 42 hours a week.
@@ -59,7 +60,7 @@ To see what a 48-hour week pays with your night and weekend differentials, use t
 
 - 12-hour shifts are tiring, and three in a row can be hard, especially on nights.
 - Weeks alternate between light and heavy, which can make childcare and appointments tricky.
-- Days off are spread out: you only get 2–3 days off in a row, never a long break like DuPont's 7 days.
+- Days off are spread out: you only get 2–3 days off in a row, never a long break like [DuPont's]({{ '/guides/dupont-schedule/' | relative_url }}) 7 days.
 - On rotating variations, switching between days and nights disrupts sleep.
 
 ## Pitman vs other 12-hour schedules
@@ -67,8 +68,8 @@ To see what a 48-hour week pays with your night and weekend differentials, use t
 | Schedule | Cycle | Avg hours/week | Longest stretch on | Longest break |
 |---|---|---|---|---|
 | Pitman (2-2-3) | 14 days | 42 | 3 shifts | 3 days |
-| DuPont | 28 days | 42 | 4 shifts | 7 days |
-| 4 on, 4 off | 8 days | 42 | 4 shifts | 4 days |
+| [DuPont]({{ '/guides/dupont-schedule/' | relative_url }}) | 28 days | 42 | 4 shifts | 7 days |
+| [4 on, 4 off]({{ '/guides/4-on-4-off-schedule/' | relative_url }}) | 8 days | 42 | 4 shifts | 4 days |
 | 3×12 (self-scheduled) | 7 days | 36 | varies | varies |
 
 ## Put your Pitman schedule on your iPhone

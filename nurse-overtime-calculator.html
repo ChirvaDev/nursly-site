@@ -6,6 +6,7 @@ permalink: /nurse-overtime-calculator
 search_title: "Nurse overtime & shift differential calculator"
 search_type: Tool
 search_keywords: "calculator pay overtime ot differential night weekend holiday paycheck salary wage hourly rate take-home net gross tax estimate"
+ct_key: t-overtime
 ---
 <main class="wrap calc-page">
   <header class="calc-head">
@@ -66,7 +67,7 @@ search_keywords: "calculator pay overtime ot differential night weekend holiday 
     <img src="{{ '/assets/img/icon.jpg' | relative_url }}" alt="Nursly app icon" width="72" height="72">
     <h2>Stop doing this math every week.</h2>
     <p>Nursly applies your rates to every shift automatically and shows your gross and take-home pay as you go.</p>
-    {% include app-store-button.html ct="calculator" qr="qr-calculator" %}
+    {% include app-store-button.html ct="t-overtime-cta" qr="qr-calculator" %}
   </aside>
 
   <article class="doc calc-doc">
@@ -91,6 +92,7 @@ search_keywords: "calculator pay overtime ot differential night weekend holiday 
     <p><strong>{{ item.q }}</strong><br>{{ item.a }}</p>
     {% endfor %}
   </article>
+  <div class="calc-doc">{% include related.html %}</div>
 </main>
 
 <script>

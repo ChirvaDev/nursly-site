@@ -1,0 +1,13 @@
+{%- comment -%}
+BreadcrumbList for Google: Home › Guides & tools › this page. Added on guides (posts) and tool pages (ct_key starting with "t-").
+{%- endcomment -%}
+{%- assign is_tool = false -%}{%- if page.ct_key and page.ct_key contains "t-" -%}{%- assign is_tool = true -%}{%- endif -%}
+{%- if page.collection == "posts" or is_tool %}
+  <script type="application/ld+json">
+  {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": {{ '/' | absolute_url | jsonify }}},
+    {"@type": "ListItem", "position": 2, "name": "Guides & tools", "item": {{ '/guides/' | absolute_url | jsonify }}},
+    {"@type": "ListItem", "position": 3, "name": {{ page.title | jsonify }}, "item": {{ page.url | absolute_url | jsonify }}}
+  ]}
+  </script>
+{%- endif -%}

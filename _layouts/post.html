@@ -1,21 +1,40 @@
 ---
 layout: default
 ---
+{%- capture ctk %}{% include ct-key.html %}{% endcapture -%}
+{%- assign mid_ct = ctk | append: "-mid" -%}
+{%- assign end_ct = ctk | append: "-end" -%}
+{%- comment -%} The mid-article prompt goes before the middle ## heading (guides with 4+ headings). {%- endcomment -%}
+{%- assign parts = content | split: "<h2" -%}
+{%- assign h2_count = parts.size | minus: 1 -%}
+{%- assign mid_at = 0 -%}
+{%- if page.mid_cta != false and h2_count >= 4 -%}{%- assign mid_at = h2_count | divided_by: 2 | plus: 1 -%}{%- endif -%}
 <main class="wrap doc post">
   <p class="crumbs"><a href="{{ '/guides/' | relative_url }}">← Guides</a></p>
   <article>
     <h1>{{ page.title }}</h1>
-    <p class="updated"><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: '%B %-d, %Y' }}</time></p>
+    <p class="updated">
+      {%- if page.last_modified_at %}Updated <time datetime="{{ page.last_modified_at | date_to_xmlschema }}">{{ page.last_modified_at | date: '%B %-d, %Y' }}</time>
+      {%- else %}<time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: '%B %-d, %Y' }}</time>{% endif -%}
+    </p>
     {%- if page.cover %}
     <img class="post-cover" src="{{ page.image | relative_url }}" alt="{{ page.title | escape }}" width="1200" height="630" fetchpriority="high">
     {%- endif %}
-    {{ content }}
+    {% if mid_at > 0 -%}
+      {%- for part in parts -%}
+        {%- if forloop.index0 == mid_at %}{% include cta-inline.html ct=mid_ct %}{% endif -%}
+        {%- if forloop.first %}{{ part }}{% else %}<h2{{ part }}{% endif -%}
+      {%- endfor -%}
+    {%- else -%}
+      {{ content }}
+    {%- endif %}
   </article>
   <aside class="card cta">
     <img src="{{ '/assets/img/icon.jpg' | relative_url }}" alt="Nursly app icon">
     <div>
       <p><strong>Try Nursly</strong><br>The shift calendar that shows what you actually earn.</p>
-      {% assign guide_ct = 'guide-' | append: page.slug %}{% include app-store-button.html ct=guide_ct qr="qr-guide" %}
+      {% include app-store-button.html ct=end_ct qr="qr-guide" %}
     </div>
   </aside>
+  {% include related.html %}
 </main>

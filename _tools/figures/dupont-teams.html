@@ -1,0 +1,19 @@
+<meta charset="utf-8"><link rel="stylesheet" href="v2.css">
+<style>
+.g { display: grid; grid-template-columns: 84px repeat(28, 1fr); gap: 3px; align-items: center; }
+.t { font-size: 19px; font-weight: 600; color: var(--muted); }
+.c { height: 34px; border-radius: 5px; background: #f6f7fb; }
+.d { background: var(--sun); } .n { background: var(--night); }
+.leg { display: flex; gap: 22px; margin-top: 22px; font-size: 20px; color: var(--muted); padding-left: 87px; }
+.leg i { display: inline-block; width: 14px; height: 14px; border-radius: 4px; margin-right: 7px; vertical-align: -1px; }
+</style>
+<div class="f" id="f"><div class="g" id="g"></div>
+<div class="leg"><span><i style="background:var(--sun)"></i>Days</span><span><i style="background:var(--night)"></i>Nights</span></div></div>
+<script>
+var P='NNNNOOODDDONNNOOODDDDOOOOOOO', h='';
+['A','B','C','D'].forEach(function(t,k){
+  var s=P.slice(28-7*k)+P.slice(0,28-7*k);
+  h+='<div class="t">Team '+t+'</div>'; for(var i=0;i<28;i++) h+='<div class="c'+(s[i]==='D'?' d':s[i]==='N'?' n':'')+'"></div>';
+});
+document.getElementById('g').innerHTML=h;
+</script>

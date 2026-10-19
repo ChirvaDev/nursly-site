@@ -1,0 +1,15 @@
+{%- comment -%}
+Small in-article App Store prompt. post.html inserts it automatically in the middle of every guide
+(turn off with mid_cta: false in front matter). Text from cta_title / cta_text in front matter, or the defaults below.
+Usage: {% include cta-inline.html ct="g-slug-mid" %}
+{%- endcomment -%}
+{%- if site.app_store_id and site.app_store_id != "" -%}
+<aside class="cta-inline">
+  <img src="{{ '/assets/img/icon.jpg' | relative_url }}" alt="" width="48" height="48" loading="lazy">
+  <div>
+    <p class="cta-inline-title">{{ page.cta_title | default: "Let Nursly do the math" }}</p>
+    <p>{{ page.cta_text | default: "Add a shift and see what it pays, with your differentials and overtime included. Your first 10 shifts are free." }}</p>
+  </div>
+  <a class="btn btn-sm" href="{% include app-store-url.html ct=include.ct %}">Get the app</a>
+</aside>
+{%- endif -%}

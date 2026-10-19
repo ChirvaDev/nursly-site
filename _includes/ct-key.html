@@ -1,0 +1,11 @@
+{%- comment -%}
+Outputs this page's key for App Store campaign links (ct), so App Store Connect shows downloads per page.
+Guides: g-<slug>. Other pages: ct_key from front matter (tools use t-<name>), else the URL ("home" for /).
+Kept to 30 chars: ct is max 40 and buttons append a place such as "-header", "-mid" or "-end".
+Usage: {% capture ctk %}{% include ct-key.html %}{% endcapture %}
+{%- endcomment -%}
+{%- if page.ct_key -%}{%- assign k = page.ct_key -%}
+{%- elsif page.collection == "posts" -%}{%- assign k = "g-" | append: page.slug -%}
+{%- else -%}{%- assign k = page.url | remove: ".html" | replace: "/", " " | strip | replace: " ", "-" -%}{%- if k == "" -%}{%- assign k = "home" -%}{%- endif -%}
+{%- endif -%}
+{{- k | slice: 0, 30 -}}
